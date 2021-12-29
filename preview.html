@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	
+		<script>
+			function previewFile(value) {
+				if(value.length>0)
+				{
+					var flag;
+					var myImageElement = document.getElementById('image');
+					myImageElement.src = 'https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif';
+					var url = value;
+					var img = new Image();
+					img.src = url;
+					img.addEventListener('load', function() {
+						var myImageElement = document.getElementById('image');
+						myImageElement.src = url;
+						flag=true;
+					});
+					img.addEventListener('error', function() {
+						var myImageElement = document.getElementById('image');
+						myImageElement.src = 'https://media.wired.com/photos/5a0201b14834c514857a7ed7/master/pass/1217-WI-APHIST-01.jpg';
+						flag=false;
+					});
+					
+				}
+				else 
+				{
+					var myImageElement = document.getElementById('image');
+					myImageElement.src = 'https://wallpaperaccess.com/full/1586750.jpg';
+					document.getElementById('image_url').value="https://wallpaperaccess.com/full/1586750.jpg";
+				}
+			}
+		</script>
+    </head>
+
+    <body>
+		<input type="url" id = "image_url" onkeyup="previewFile(this.value)" value="https://wallpaperaccess.com/full/1586750.jpg"><br>
+		<img id="image" src="https://wallpaperaccess.com/full/1586750.jpg" height="200" alt="Image preview...">
+    </body>
+</html>
